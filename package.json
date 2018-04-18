@@ -1,0 +1,32 @@
+{
+  "name": "marvel",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "gh-pages": "^1.1.0",
+    "query-string": "^6.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "App.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "http://loveducks.github.io/marvel"
+  },
+  "keywords": [
+    "no"
+  ],
+  "author": "me",
+  "license": "ISC"
+}
