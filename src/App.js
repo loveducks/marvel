@@ -14,9 +14,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container-fluid">
-        <Marvel API_KEY={API_KEY} PRI_KEY={PRI_KEY} URL={URL} />    
-      </div>
+        <div className="App">
+            <Marvel API_KEY={API_KEY} PRI_KEY={PRI_KEY} URL={URL} />    
+        </div>
     );
   }
 }
