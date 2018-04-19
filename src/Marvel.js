@@ -65,7 +65,7 @@ class Marvel extends Component{
     render(){
         return(
             <form className="marvel" onSubmit={this.handleSubmit.bind(this)}>
-                <input type="text" onChange={this.getSearch.bind(this)} placeholder="Search..." />
+                <input type="text" onChange={this.getSearch.bind(this)} placeholder="Look up a hero..." />
                 <input type="submit" value="Go!" /> 
                 {
                     //print results otherwise display error

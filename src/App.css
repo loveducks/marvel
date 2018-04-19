@@ -20,6 +20,11 @@ body{
 .App-intro {
   font-size: large;
 }
+.title{
+    color: #dadada;
+    text-align: center;
+    font-size: 25px;
+}
 
 input[type="text"]{
   border: none;
