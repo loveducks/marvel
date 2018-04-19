@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
+import queryString from 'qs';
+//replsace query-string to qs for build
 import crypto from 'crypto';
 import Character from './Character';
 
@@ -10,9 +11,10 @@ class Marvel extends Component{
         this.state = { param: {
             nameStartsWith: '',
             orderBy: 'name',
-            limit: 20
+            limit: 20 
             },
-            data: [] 
+            data: [],
+            success: null 
         }
     }
 
@@ -22,7 +24,11 @@ class Marvel extends Component{
             .then( resp => {
                 const data = resp.data.results.map(fetchData)
                     this.setState({ data });
-                console.log(this.state.data);
+                //check if you get any valid results
+                if(!this.state.data.length)
+                    this.setState( {success: true} );
+                else
+                    this.setState( {success: false} );
             })
             .then( () => this.state.data)
             .catch( err => (
@@ -35,7 +41,8 @@ class Marvel extends Component{
         let ts = new Date().getTime();
         let hash = crypto.createHash('md5').update( ts + this.props.PRI_KEY + this.props.API_KEY ).digest('hex');
         //adding a hash as per documentation
-        let url = this.props.URL + '?' + queryString.stringify(this.state.param) + '&apikey=' + this.props.API_KEY + '&ts=' + ts + '&hash=' + hash;
+        let url = this.props.URL + '?' + queryString.stringify(this.state.param) + 
+            '&apikey=' + this.props.API_KEY + '&ts=' + ts + '&hash=' + hash;
         console.log(url);
         return url;
     }
@@ -44,8 +51,9 @@ class Marvel extends Component{
         this.setState ({param: {
             nameStartsWith: evt.target.value,
             orderBy: 'name',
-            limit: 20
-            }
+            limit: 20 
+            },
+            success: null //will only turn null when submitting form
         });
     }
 
@@ -60,9 +68,13 @@ class Marvel extends Component{
                 <input type="text" onChange={this.getSearch.bind(this)} placeholder="Search..." />
                 <input type="submit" value="Go!" /> 
                 {
+                    //print results otherwise display error
+                    (!this.state.success) ?
                     this.state.data.map( (data, idx) =>
                         <Character data={data} key={idx} />
-                    )
+                    ) 
+                    : 
+                    <p className="noresults">no results found</p>
                 }
             </form>
         )

@@ -84,3 +84,12 @@ input[type="submit"]:hover{
   background-size: cover;
   height: 20vw;
 }
+.noresults{
+  margin: 0 0 10px;
+  margin-top: 0px;
+  color: #dadada;
+  font-size: 20px;
+  margin-top: 30px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px #959595;
+}
