@@ -20,9 +20,10 @@ body{
 .App-intro {
   font-size: large;
 }
+
 .title{
     color: #c0c0c0;
-    text-align: center;
+    text-align-last: center;
     font-size: 25px;
 }
 
@@ -97,4 +98,25 @@ input[type="submit"]:hover{
   margin-top: 30px;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px #959595;
+}
+
+.select_style {
+  overflow: hidden;
+}
+.select_style select {
+  -webkit-appearance: none;
+  /*background: #dadada;*/
+  border: none;
+  outline: none;
+  color: #848484;
+  border: 1px solid #cecece;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+  background-position-x: 134px;
+  width: 170px;
+  -moz-appearance: none;
+  margin: 10px;
+  padding: 10px;
+}
+select option[disabled] {
+  color: #aeaeae;
 }

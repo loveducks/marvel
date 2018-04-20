@@ -13,7 +13,9 @@ class Marvel extends Component{
             orderBy: 'name',
             limit: 20 
             },
+            order: 'name',
             data: [],
+            search: '',
             success: null 
         }
     }
@@ -50,11 +52,25 @@ class Marvel extends Component{
     getSearch(evt){
         this.setState ({param: {
             nameStartsWith: evt.target.value,
-            orderBy: 'name',
+            orderBy: this.state.order,
             limit: 20 
             },
+            search: evt.target.value,
             success: null //will only turn null when submitting form
         });
+    }
+
+    getOptions(eve){
+        this.setState( {
+            param: {
+                nameStartsWith: this.state.search,
+                orderBy: eve.target.value,
+                limit: 20
+            },
+            order: eve.target.value,
+            success: null
+        })
+
     }
 
     handleSubmit(e){
@@ -65,8 +81,18 @@ class Marvel extends Component{
     render(){
         return(
             <form className="marvel" onSubmit={this.handleSubmit.bind(this)}>
-                <input type="text" onChange={this.getSearch.bind(this)} placeholder="Look up a hero..." />
+                <input type="text" onChange={this.getSearch.bind(this)} placeholder="Search..." />
                 <input type="submit" value="Go!" /> 
+                <div className="select_style">
+                    <select className="options" onChange = { this.getOptions.bind(this) }> 
+                        <option value="name">name</option>
+                        <option disabled>-descending</option>
+                        <option value="-name">&nbsp;&nbsp;name</option>
+                        <option value="modified">modified</option>
+                        <option disabled>-descending</option>
+                        <option value="-modified">&nbsp;&nbsp;modified</option>
+                    </select>
+                </div>
                 {
                     //print results otherwise display error
                     (!this.state.success) ?
